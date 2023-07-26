@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>products</title>
+</head>
+<body>
+	<div class="container">
+		<div th:if="${not #lists.isEmpty(products)}">
+			<h2>Products List</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th>Product ID</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>View</th>
+					<th>Edit</th>
+				</tr>
+				<tr th:each="product: ${products}">
+					<td th:text="${product.id}"><a href="/product/${product.id}">ID</a></td>
+					<td th:text="${product.productId}"><a href="/product/${product.id}">product id</a></td>
+					<td th:text="${product.description}"><a href="/product/${product.id}">description</a></td>
+					<td th:text="${product.price}"><a href="/product/${product.id}">price</a></td>
+					<td><a th:ref="${'/product/'+product.id}"></a>view</td>
+					<td><a th:ref="${'/product/'edit/' + product.id}"></a>edit</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+</body>
+</html>
